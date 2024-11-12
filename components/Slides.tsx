@@ -377,10 +377,6 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
 
 
 export const renderSlide = (slideIndex: number, props: SlideProps) => {
-  useEffect(() => {
-    const slide = slideData[slideIndex];
-    logEvent('Slide Viewed', { slideIndex: slideIndex, slideTitle: slide.title });
-  }, [slideIndex]);
 
   let slide = slideData[slideIndex];
   

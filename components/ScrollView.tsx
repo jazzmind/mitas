@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { renderSlide } from './Slides';
 import Image from 'next/image';
+import { logEvent } from '@/utils/tracking';
+
+const sections = [
+  { id: 'intro', title: 'Intro' },
+  { id: 'opportunity', title: 'Opportunity' },
+  { id: 'overview', title: 'Overview' },
+  { id: 'program', title: 'Program' },
+  { id: 'candidates', title: 'Candidates' },
+  { id: 'partnerships', title: 'Partnerships' },
+  { id: 'timeline', title: 'Timeline' },
+  { id: 'next-steps', title: 'Next Steps' },
+  { id: 'mitas', title: 'MITAS' },
+];
 
 export const ScrollView = () => {
   const commonProps = { showElements: true, isScrollView: true, setModalContent: () => {}, autoExpand: false };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      sections.forEach((section, index) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (scrollPosition >= rect.top + window.scrollY && scrollPosition < rect.bottom + window.scrollY) {
+            logEvent('section_view', { section: section.title });
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen">

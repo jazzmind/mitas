@@ -44,18 +44,10 @@ const PitchDeck = () => {
     }
 
     // Handle next button click
-    if (currentSlide === 0) {
-      if (autoExpandIntro) {
-        setAutoExpandIntro(false);
-        setShowElements(false);
-        setTimeout(() => {
-          setCurrentSlide(prev => (prev + 1) % slideData.length);
-        }, 300);
-      } else {
-        setAutoExpandIntro(true);
-      }
-      return;
-    }
+    // if (currentSlide === 0 && !autoExpandIntro) {
+    //   setAutoExpandIntro(true)  ;
+    //   return;
+    // }
 
     // Normal slide advancement
     setShowElements(false);
