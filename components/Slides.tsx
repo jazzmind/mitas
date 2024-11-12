@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatedSection } from './AnimatedSection';
 import { slideData } from '@/data/pitchDeckContent';
-import { SlideProps } from '@/data/types';
+import { SlideProps, TimelinePhase } from '@/data/types';
 import * as Icons from 'lucide-react';
 
 // Create a separate component for the first slide to handle its state

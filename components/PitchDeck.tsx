@@ -14,7 +14,7 @@ const PitchDeck = () => {
   const { isPresentationMode } = usePresentationMode();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showElements, setShowElements] = useState(true);
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<{ title: string; content: React.ReactNode } | null>(null);
   const [autoExpandIntro, setAutoExpandIntro] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
 

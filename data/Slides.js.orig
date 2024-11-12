@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AnimatedSection } from './AnimatedSection';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { slideData } from '@/data/pitchDeckContent';
 import { SlideProps } from '@/data/types';
 import * as Icons from 'lucide-react';
