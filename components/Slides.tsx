@@ -374,7 +374,34 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
   </div>
 );
 
+// Declare gtag as a global function
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+// Add Google Analytics event tracking to measure time spent on each slide.
+const trackSlideView = (slideIndex: number) => {
+  const startTime = Date.now();
+  return () => {
+    const endTime = Date.now();
+    const timeSpent = endTime - startTime;
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'slide_view', {
+        slide_index: slideIndex,
+        timeSpent: timeSpent
+      });
+    }
+  };
+};
+
 export const renderSlide = (slideIndex: number, props: SlideProps) => {
+  useEffect(() => {
+    const endTracking = trackSlideView(slideIndex);
+    return () => endTracking();
+  }, [slideIndex]);
+
   let slide = slideData[slideIndex];
   
   switch (slideIndex) {
