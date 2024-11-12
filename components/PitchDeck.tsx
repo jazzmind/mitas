@@ -25,7 +25,7 @@ const PitchDeck = () => {
   }, [currentSlide]);
 
   useEffect(() => {
-    logEvent('Slide Viewed', { slideIndex: currentSlide });
+    logEvent('Slide Viewed', { slideIndex: currentSlide, slideTitle: slideData[currentSlide].title });
     setStartTime(Date.now());
   }, [currentSlide]);
 

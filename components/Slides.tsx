@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { AnimatedSection } from './AnimatedSection';
 import { slideData } from '@/data/pitchDeckContent';
 import { SlideProps, TimelinePhase } from '@/data/types';
+import { logEvent } from '@/utils/tracking';
 import * as Icons from 'lucide-react';
 
 // Create a separate component for the first slide to handle its state
@@ -374,26 +375,11 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
   </div>
 );
 
-// Add Google Analytics event tracking to measure time spent on each slide.
-const trackSlideView = (slideTitle: string) => {
-  const startTime = Date.now();
-  return () => {
-    const endTime = Date.now();
-    const timeSpent = endTime - startTime;
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'slide_view', {
-        page_path: slideTitle,
-        timeSpent: timeSpent
-      });
-    }
-  };
-};
 
 export const renderSlide = (slideIndex: number, props: SlideProps) => {
   useEffect(() => {
     const slide = slideData[slideIndex];
-    const endTracking = trackSlideView(slide.title);
-    return () => endTracking();
+    logEvent('Slide Viewed', { slideIndex: slideIndex, slideTitle: slide.title });
   }, [slideIndex]);
 
   let slide = slideData[slideIndex];
