@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AnimatedSection } from './AnimatedSection';
 import { slideData } from '@/data/pitchDeckContent';
 import { SlideProps, TimelinePhase } from '@/data/types';
@@ -374,22 +374,15 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
   </div>
 );
 
-// Declare gtag as a global function
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
-
 // Add Google Analytics event tracking to measure time spent on each slide.
-const trackSlideView = (slideIndex: number) => {
+const trackSlideView = (slideTitle: string) => {
   const startTime = Date.now();
   return () => {
     const endTime = Date.now();
     const timeSpent = endTime - startTime;
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'slide_view', {
-        slide_index: slideIndex,
+        page_path: slideTitle,
         timeSpent: timeSpent
       });
     }
@@ -398,7 +391,8 @@ const trackSlideView = (slideIndex: number) => {
 
 export const renderSlide = (slideIndex: number, props: SlideProps) => {
   useEffect(() => {
-    const endTracking = trackSlideView(slideIndex);
+    const slide = slideData[slideIndex];
+    const endTracking = trackSlideView(slide.title);
     return () => endTracking();
   }, [slideIndex]);
 

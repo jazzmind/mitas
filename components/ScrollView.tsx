@@ -1,5 +1,4 @@
 import React from 'react';
-import { slideData } from '@/data/pitchDeckContent';
 import { renderSlide } from './Slides';
 import Image from 'next/image';
 
