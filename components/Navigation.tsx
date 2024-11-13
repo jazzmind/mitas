@@ -16,6 +16,8 @@ export const Navigation = () => {
   };
 
   return (
+    <>
+     {!isPresentationMode && (
     <nav className={`fixed top-0 right-0 z-50 dark:invert w-full bg-white/80 backdrop-blur-sm shadow-sm`}>
       <div className="flex items-center justify-between px-4 py-2">
         <Image 
@@ -26,8 +28,7 @@ export const Navigation = () => {
           className="hidden md:block"
           priority 
         />
-        
-        {!isPresentationMode && (
+    
           <>
             {/* Desktop Navigation */}
             <div className="hidden md:flex text-black flex-1 justify-center gap-8 text-sm font-medium">
@@ -48,7 +49,7 @@ export const Navigation = () => {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </>
-        )}
+
 
         <button
           onClick={togglePresentationMode}
@@ -123,5 +124,17 @@ export const Navigation = () => {
         </div>
       )}
     </nav>
+    )}
+    {isPresentationMode && (
+        <button
+          onClick={togglePresentationMode}
+          className="float-end p-2 m-5 dark:bg-black bg-white rounded-full shadow-md hover:shadow-lg transition-all"
+          title={isPresentationMode ? "Switch to scroll mode" : "Switch to presentation mode"}
+        >
+          {isPresentationMode ? <ScrollText size={24} /> : <Monitor size={24} />}
+        </button>
+    )
+    }
+    </>
   );
 };

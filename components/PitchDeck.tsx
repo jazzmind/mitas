@@ -69,7 +69,7 @@ const PitchDeck = () => {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="nodark min-h-screen bg-gray-50 p-4 md:p-8">
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="p-4 md:p-8">
             <AnimatedSection show={showElements}>
@@ -80,7 +80,7 @@ const PitchDeck = () => {
                     alt="MIT Logo"
                     width={120}
                     height={60}
-                    className="dark:invert"
+                    className=""
                     priority
                   />
                 </div>
@@ -89,7 +89,7 @@ const PitchDeck = () => {
                   alt="MITAS Logo"
                   width={250}
                   height={60}
-                  className="dark:invert"
+                  className=""
                   priority
                 />
               </div>
@@ -112,7 +112,7 @@ const PitchDeck = () => {
                     alt="MIT Alumni Logo"
                     width={100}
                     height={40}
-                    className="dark:invert"
+                    className=""
                   />
                 </div>
                 <div className="w-1/3 flex justify-center">
@@ -122,7 +122,7 @@ const PitchDeck = () => {
                     alt="Founders Circles Logo"
                     width={100}
                     height={40}
-                    className="dark:invert"
+                    className=""
                   />
                 </div>
                 <div className="w-1/3 flex justify-center">

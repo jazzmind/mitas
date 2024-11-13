@@ -15,6 +15,10 @@
   .card {
     background: var(--background);
   }
+  .nodark, .nodark .card {
+    background: #ededed;
+    color: #171717;
+  }
 }
 
 body {

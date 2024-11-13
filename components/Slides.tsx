@@ -313,7 +313,7 @@ const renderProgram = (slide: any, props: SlideProps) => (
             {slide.stats.stats.map((stat: any, i: number) => (
               <div key={i} className="text-center p-4">
                 <div className="text-2xl font-bold text-mit-red">{stat.value}</div>
-                <div className="text-sm dark:text-white text-gray-600">{stat.label}</div>
+                <div className="text-sm dark:invert text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
