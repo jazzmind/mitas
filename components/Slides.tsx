@@ -10,53 +10,63 @@ const IntroSlide = ({ slide, props }: { slide: any; props: SlideProps }) => {
   const slideRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="space-y-8" ref={slideRef}>
+    <div className="flex flex-col gap-8 min-h-[600px]" ref={slideRef}>
       <AnimatedSection show={props.showElements}>
-      <div className="relative h-[200px]">
-        <div className="flex flex-col justify-center space-x-8 items-center h-full">
-          <h1 className={`text-6xl font-bold ${props.isScrollView ? 'text-mit-red drop-shadow-[0_2px_2px_rgba(0,0,0,0.7)]' : 'text-mit-red'} mb-8 text-center`}>{slideData[0].title}</h1>
-          <div className="text-center space-y-4 relative">
-            <h1 className={`text-4xl font-bold ${props.isScrollView ? 'text-white  drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]' : 'text-mit-red'}`}>
+        <div className="flex flex-col justify-center items-center">
+          <h1 className={`text-4xl md:text-6xl font-bold ${
+            props.isScrollView 
+              ? 'text-mit-red drop-shadow-[0_2px_2px_rgba(0,0,0,0.7)]' 
+              : 'text-mit-red'
+            } mb-8 text-center`}>
+            {slideData[0].title}
+          </h1>
+          <div className="text-center space-y-4">
+            <h1 className={`text-2xl md:text-4xl font-bold ${
+              props.isScrollView 
+                ? 'text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]' 
+                : 'text-mit-red'
+              }`}>
               {slide.subtitle}
             </h1>
-            <p className={`text-xl my-5  ${props.isScrollView ? 'text-white  drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]' : 'text-black'} font-medium`}>
+            <p className={`text-lg md:text-xl ${
+              props.isScrollView 
+                ? 'text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]' 
+                : 'text-black'
+              } font-medium max-w-3xl mx-auto`}>
               {slide.description}
             </p>
           </div>
         </div>
-      </div>
       </AnimatedSection>
 
       {props.isScrollView && (
-      <AnimatedSection show={props.showElements}>
-      <div className="relative h-[200px]">
-      <div className="flex justify-center space-x-8 items-center h-full"> 
-      <div className="my-5 grid grid-cols-3 gap-6" >
-        {slide.actions.map((action: any, i: number) => (
-          <div
-            key={i}
-            className="p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
-            onClick={() => props.setModalContent({
-              title: action.title,
-              content: (
-                <div>
-                  <p>{action.description}</p>
-                  <p className="mt-4 text-mit-red">Click to continue →</p>
+        <AnimatedSection show={props.showElements}>
+          <div className="mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {slide.actions.map((action: any, i: number) => (
+                <div
+                  key={i}
+                  className="card p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
+                  onClick={() => props.setModalContent({
+                    title: action.title,
+                    content: (
+                      <div>
+                        <p>{action.description}</p>
+                        <p className="mt-4 text-mit-red">Click to continue →</p>
+                      </div>
+                    )
+                  })}
+                >
+                  <h3 className="font-semibold text-mit-red mb-2">{action.title}</h3>
+                  <p className="text-sm">{action.description}</p>
                 </div>
-              )
-            })}
-          >
-            <h3 className="font-semibold text-mit-red mb-2">{action.title}</h3>
-            <p className="text-sm">{action.description}</p>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-      </div>
-      </div>
-    </AnimatedSection>
-    )}
+        </AnimatedSection>
+      )}
 
-     {!props.isScrollView && (
+      {!props.isScrollView && (
       <AnimatedSection show={props.showElements} delay={200}>
         <div className="relative h-[250px] transition-all duration-500">
           <div className="flex justify-center space-x-8 items-center h-full">
@@ -104,35 +114,26 @@ const renderOverview = (slide: any, props: SlideProps) => {
       <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-black' : 'text-mit-red'} text-center`}>{slide.title} Overview</h2>
 
       <AnimatedSection show={props.showElements} delay={200}>
-      <div className="relative h-[400px] transition-all duration-500">
-        <div className="flex justify-center space-x-8 items-center h-full">
+      <div className="relative transition-all duration-500">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {slide.features.map((feature: any, i: number) => {
             const Icon = Icons[feature.icon as keyof typeof Icons] as React.ElementType;
             
             return (
               <div
                 key={i}
-                className={`
-                  transition-all duration-500 ease-in-out 
+                className="transition-all duration-500 ease-in-out 
                   bg-white rounded-lg shadow-md 
-                  w-[600px] h-[350px] z-10
                   cursor-pointer hover:shadow-lg
-                `}
+                  h-full"
               >
-                <div className={`
-                  p-6 h-full flex flex-col
-                  items-start text-left
-                `}>
+                <div className="p-6 h-full flex flex-col items-start text-left">
                   <Icon 
-                    className={`
-                      text-mit-red mb-4 transition-all
-                      w-12 h-12
-                    `}
+                    className="text-mit-red mb-4 transition-all
+                      w-12 h-12"
                   />
-                  <h3 className={`
-                    font-semibold mb-2 transition-all
-                    text-xl
-                  `}>
+                  <h3 className="font-semibold mb-2 transition-all
+                    text-xl">
                     {feature.title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-4">{feature.description}</p>
@@ -166,12 +167,12 @@ const renderStats = (slide: any, props: SlideProps) => {
   if (slide.partnerships) {
     return (
       <div className="space-y-8">
-      <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-black' : 'text-mit-red'} text-center`}>{slide.title}</h2>
+      <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-white' : 'text-mit-red'} text-center`}>{slide.title}</h2>
 
         <AnimatedSection show={props.showElements}>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {Object.entries(slide.partnerships).map(([key, items], i) => (
-              <div key={key} className="p-6 bg-gray-50 rounded-lg">
+              <div key={key} className="card p-6 bg-gray-50 rounded-lg">
                 <h3 className="font-semibold text-mit-red mb-4 capitalize">{key}</h3>
                 <ul className="space-y-2">
                   {(items as string[]).map((item, j) => (
@@ -187,9 +188,9 @@ const renderStats = (slide: any, props: SlideProps) => {
         </AnimatedSection>
         
         <AnimatedSection show={props.showElements} delay={200}>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {slide.highlights.map((highlight: string, i: number) => (
-              <div key={i} className="text-center p-4 bg-gray-50 rounded-lg">
+              <div key={i} className="card text-center p-4 bg-gray-50 rounded-lg">
                 <span className="text-sm text-mit-red">{highlight}</span>
               </div>
             ))}
@@ -206,7 +207,7 @@ const renderStats = (slide: any, props: SlideProps) => {
 
       {slide.sections?.map((section: any, i: number) => (
         <AnimatedSection key={i} show={props.showElements} delay={i * 200}>
-          <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="card bg-gray-50 p-6 rounded-lg">
             <h3 className="text-xl font-semibold text-mit-red mb-4">{section.title}</h3>
             {section.stats ? (
               <div className="grid grid-cols-3 gap-4">
@@ -241,7 +242,7 @@ const renderTimeline = (slide: any, props: SlideProps) => (
     <AnimatedSection show={props.showElements}>
       <div className="relative pb-8">
         <div className="h-1 bg-mit-red/20 absolute w-full top-5"></div>
-        <div className="grid grid-cols-4 gap-4 relative">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
           {slide.phases.map((phase: TimelinePhase, i: number) => (
             <div key={i} className="text-center">
               <div className="w-10 h-10 bg-mit-red rounded-full mx-auto mb-3 flex items-center justify-center text-white font-semibold">
@@ -256,9 +257,9 @@ const renderTimeline = (slide: any, props: SlideProps) => (
     </AnimatedSection>
 
     <AnimatedSection show={props.showElements} delay={300}>
-      <div className="grid grid-cols-4 gap-4 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
       {slide.phases.map((phase: TimelinePhase, i: number) => (
-          <div key={i} className="text-center p-4 bg-gray-50 rounded-lg">
+          <div key={i} className="card text-center p-4 bg-gray-50 rounded-lg">
             <span className="text-sm text-mit-red font-medium">{phase.duration}</span>
           </div>
         ))}
@@ -272,9 +273,9 @@ const renderCandidateProfile = (slide: any, props: SlideProps) => (
     <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-black' : 'text-mit-red'} text-center`}>{slide.title}</h2>
 
     <AnimatedSection show={props.showElements}>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {Object.entries(slide.criteria).map(([key, criteria]: [string, any], i) => (
-          <div key={key} className="bg-gray-50 p-6 rounded-lg">
+          <div key={key} className="card bg-gray-50 p-6 rounded-lg">
             <h4 className="font-semibold mb-4 text-mit-red capitalize">{key}</h4>
             <ul className="space-y-2">
               {criteria.map((criterion: string, j: number) => (
@@ -289,9 +290,9 @@ const renderCandidateProfile = (slide: any, props: SlideProps) => (
       </div>
     </AnimatedSection>
     <AnimatedSection show={props.showElements} delay={200}>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {slide.successMetrics.map((metric: string, i: number) => (
-          <div key={i} className="text-center p-4 bg-gray-50 rounded-lg">
+          <div key={i} className="card text-center p-4 bg-gray-50 rounded-lg">
             <span className="text-sm">{metric}</span>
           </div>
         ))}
@@ -305,8 +306,8 @@ const renderProgram = (slide: any, props: SlideProps) => (
     <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-white' : 'text-mit-red'} text-center`}>{slide.title}</h2>
 
     <AnimatedSection show={props.showElements}>
-      <div className="grid grid-cols-2 gap-8">
-        <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="card bg-gray-50 p-6 rounded-lg">
           <h3 className="font-semibold text-mit-red mb-4">{slide.stats.title}</h3>
           <div className="grid grid-cols-2 gap-4">
             {slide.stats.stats.map((stat: any, i: number) => (
@@ -317,7 +318,7 @@ const renderProgram = (slide: any, props: SlideProps) => (
             ))}
           </div>
         </div>
-        <div className="bg-gray-50 p-6 rounded-lg">
+        <div className="card bg-gray-50 p-6 rounded-lg">
           <h3 className="font-semibold text-mit-red mb-4">Key Initiatives</h3>
           <ul className="space-y-2">
             {slide.initiatives.map((initiative: string, i: number) => (
@@ -338,11 +339,11 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
     <h2 className={`text-4xl font-bold mb-16 ${props.isScrollView ? 'text-white' : 'text-mit-red'} text-center`}>{slide.title}</h2>
 
     <AnimatedSection show={props.showElements}>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {slide.actions.map((action: any, i: number) => (
           <div
             key={i}
-            className="p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
+            className="card p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
             onClick={() => props.setModalContent({
               title: action.title,
               content: (
@@ -360,7 +361,7 @@ const renderNextSteps = (slide: any, props: SlideProps) => (
       </div>
     </AnimatedSection>
     <AnimatedSection show={props.showElements} delay={200}>
-      <div className={`${props.isScrollView ? 'bg-white' : 'bg-mit-red/5'}  p-6 rounded-lg`}>
+      <div className={`${props.isScrollView ? 'bg-white' : 'bg-mit-red/5'}  card p-6 rounded-lg`}>
         <h3 className="font-semibold text-mit-red mb-4">Important Dates</h3>
         <div className="grid grid-cols-3 gap-4">
           {Object.entries(slide.timeline).map(([key, value]: [string, any], i) => (
