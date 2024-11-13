@@ -80,7 +80,7 @@ export const ScrollView = () => {
       </section>
 
       {/* Partnership Network */}
-      <section id="candidates" className="py-16 md:py-32 ">
+      <section id="candidates" className="py-16 md:py-32 dark:bg-gray-400  ">
         <div className="max-w-6xl mx-auto px-4">
           {renderSlide(4, commonProps)}
         </div>

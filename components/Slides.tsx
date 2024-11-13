@@ -123,7 +123,7 @@ const renderOverview = (slide: any, props: SlideProps) => {
               <div
                 key={i}
                 className="transition-all duration-500 ease-in-out 
-                  bg-white rounded-lg shadow-md 
+                  card bg-white rounded-lg shadow-md 
                   cursor-pointer hover:shadow-lg
                   h-full"
               >
@@ -207,7 +207,7 @@ const renderStats = (slide: any, props: SlideProps) => {
 
       {slide.sections?.map((section: any, i: number) => (
         <AnimatedSection key={i} show={props.showElements} delay={i * 200}>
-          <div className="card bg-gray-50 p-6 rounded-lg">
+          <div className={`card ${slide.program ? 'dark:bg-gray-800' : '' } bg-gray-50 p-6 rounded-lg`}>
             <h3 className="text-xl font-semibold text-mit-red mb-4">{section.title}</h3>
             {section.stats ? (
               <div className="grid grid-cols-3 gap-4">
@@ -307,18 +307,18 @@ const renderProgram = (slide: any, props: SlideProps) => (
 
     <AnimatedSection show={props.showElements}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="card bg-gray-50 p-6 rounded-lg">
+        <div className="card dark:bg-gray-800 bg-gray-50 p-6 rounded-lg">
           <h3 className="font-semibold text-mit-red mb-4">{slide.stats.title}</h3>
           <div className="grid grid-cols-2 gap-4">
             {slide.stats.stats.map((stat: any, i: number) => (
               <div key={i} className="text-center p-4">
                 <div className="text-2xl font-bold text-mit-red">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <div className="text-sm dark:text-white text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="card bg-gray-50 p-6 rounded-lg">
+        <div className="card dark:bg-gray-800 bg-gray-50 p-6 rounded-lg">
           <h3 className="font-semibold text-mit-red mb-4">Key Initiatives</h3>
           <ul className="space-y-2">
             {slide.initiatives.map((initiative: string, i: number) => (

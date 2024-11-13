@@ -168,6 +168,7 @@ export const slideData = [
   },
   {
     title: "Program Elements",
+    program: 'mitas',
     description: "Personalized upskilling, mentoring, networking and profile building",
     sections: [
       {

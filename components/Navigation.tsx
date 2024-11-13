@@ -30,7 +30,7 @@ export const Navigation = () => {
         {!isPresentationMode && (
           <>
             {/* Desktop Navigation */}
-            <div className="hidden md:flex flex-1 justify-center gap-8 text-sm font-medium">
+            <div className="hidden md:flex text-black flex-1 justify-center gap-8 text-sm font-medium">
               <a href="#opportunity" onClick={(e) => handleScroll(e, '#opportunity')} className="hover:text-mit-red transition-colors">{slideData[1].title}</a>
               <a href="#overview" onClick={(e) => handleScroll(e, '#overview')} className="hover:text-mit-red transition-colors">{slideData[2].title}</a>
               <a href="#program" onClick={(e) => handleScroll(e, '#program')} className="hover:text-mit-red transition-colors">{slideData[3].title}</a>
@@ -43,7 +43,7 @@ export const Navigation = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+              className="md:hidden text-black p-2 hover:bg-gray-100 rounded-lg"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -61,7 +61,7 @@ export const Navigation = () => {
 
       {/* Mobile Navigation Dropdown */}
       {!isPresentationMode && isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-white/95 backdrop-blur-sm shadow-lg py-4">
+        <div className="md:hidden text-black absolute w-full bg-white/95 backdrop-blur-sm shadow-lg py-4">
           <div className="flex flex-col gap-4 px-4">
             <a href="#opportunity" 
                onClick={(e) => {
@@ -79,7 +79,46 @@ export const Navigation = () => {
                className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
               {slideData[2].title}
             </a>
-            {/* ... Add similar entries for other navigation items ... */}
+            <a href="#program" 
+               onClick={(e) => {
+               handleScroll(e, '#program');
+               setIsMenuOpen(false);
+               }} 
+               className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
+              {slideData[3].title}
+            </a>
+            <a href="#candidates" 
+               onClick={(e) => {
+               handleScroll(e, '#candidates');
+               setIsMenuOpen(false);
+               }} 
+               className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
+              {slideData[4].title}
+            </a>
+            <a href="#partnerships" 
+               onClick={(e) => {
+               handleScroll(e, '#partnerships');
+               setIsMenuOpen(false);
+               }} 
+               className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
+              {slideData[5].title}
+            </a>
+            <a href="#timeline" 
+               onClick={(e) => {
+               handleScroll(e, '#timeline');
+               setIsMenuOpen(false);
+               }} 
+               className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
+              {slideData[6].title}
+            </a>
+            <a href="#next-steps" 
+               onClick={(e) => {
+               handleScroll(e, '#next-steps');
+               setIsMenuOpen(false);
+               }} 
+               className="hover:text-mit-red transition-colors py-2 border-b border-gray-100">
+              {slideData[8].title}
+            </a>
           </div>
         </div>
       )}
