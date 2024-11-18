@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Monitor, ScrollText, Menu, X } from 'lucide-react';
 import { slideData } from '@/data/pitchDeckContent';
 import Image from 'next/image';
@@ -11,11 +11,42 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ presentationMode, togglePresentationMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Add effect to handle initial anchor navigation
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }, []);
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    document.querySelector(id)?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    const mainPath = window.location.pathname === '/';
+    
+    if (!mainPath) {
+      window.location.href = `/${id}`;
+      return;
+    }
+
+    // Update URL without reload
+    window.history.pushState({}, '', id);
+    
+    if (presentationMode) {
+      togglePresentationMode();
+      setTimeout(() => {
+        document.querySelector(id)?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 300);
+    } else {
+      document.querySelector(id)?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
