@@ -6,17 +6,23 @@ import { Modal } from '@/components/Modal';
 import { renderSlide } from './Slides';
 import { slideData } from '@/data/pitchDeckContent';
 import { logEvent } from '@/utils/tracking'; // Import tracking utility
-import { usePresentationMode } from '@/contexts/PresentationContext';
 import { Navigation } from './Navigation';
 import { ScrollView } from './ScrollView';
 
-const PitchDeck = () => {
-  const { isPresentationMode } = usePresentationMode();
+interface PitchDeckProps {
+  presentationMode: boolean;
+}
+
+const PitchDeck: React.FC<PitchDeckProps> = ({ presentationMode }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showElements, setShowElements] = useState(true);
   const [modalContent, setModalContent] = useState<{ title: string; content: React.ReactNode } | null>(null);
   const [autoExpandIntro, setAutoExpandIntro] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
+
+  const togglePresentationMode = () => {
+    window.location.href = presentationMode ? '/' : '/presentation';
+  };
 
   useEffect(() => {
     setShowElements(false);
@@ -57,10 +63,10 @@ const PitchDeck = () => {
     }, 300);
   };
 
-  if (!isPresentationMode) {
+  if (!presentationMode) {
     return (
       <>
-        <Navigation />
+        <Navigation presentationMode={presentationMode} togglePresentationMode={togglePresentationMode} />
         <ScrollView />
       </>
     );
@@ -68,7 +74,7 @@ const PitchDeck = () => {
 
   return (
     <>
-      <Navigation />
+      <Navigation presentationMode={presentationMode} togglePresentationMode={togglePresentationMode} />
       <div className="nodark min-h-screen bg-gray-50 p-4 md:p-8">
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="p-4 md:p-8">

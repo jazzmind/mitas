@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Monitor, ScrollText, Menu, X } from 'lucide-react';
-import { usePresentationMode } from '@/contexts/PresentationContext';
 import { slideData } from '@/data/pitchDeckContent';
 import Image from 'next/image';
 
-export const Navigation = () => {
-  const { isPresentationMode, togglePresentationMode } = usePresentationMode();
+interface NavigationProps {
+  presentationMode: boolean;
+  togglePresentationMode: () => void;
+}
+
+export const Navigation: React.FC<NavigationProps> = ({ presentationMode, togglePresentationMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -17,7 +20,7 @@ export const Navigation = () => {
 
   return (
     <>
-     {!isPresentationMode && (
+     {!presentationMode && (
     <nav className={`fixed top-0 right-0 z-50 dark:invert w-full bg-white/80 backdrop-blur-sm shadow-sm`}>
       <div className="flex items-center justify-between px-4 py-2">
         <Image 
@@ -54,14 +57,14 @@ export const Navigation = () => {
         <button
           onClick={togglePresentationMode}
           className="p-2 dark:bg-black bg-white rounded-full shadow-md hover:shadow-lg transition-all"
-          title={isPresentationMode ? "Switch to scroll mode" : "Switch to presentation mode"}
+          title={presentationMode ? "Switch to scroll mode" : "Switch to presentation mode"}
         >
-          {isPresentationMode ? <ScrollText size={24} /> : <Monitor size={24} />}
+          {presentationMode ? <ScrollText size={24} /> : <Monitor size={24} />}
         </button>
       </div>
 
       {/* Mobile Navigation Dropdown */}
-      {!isPresentationMode && isMenuOpen && (
+      {!presentationMode && isMenuOpen && (
         <div className="md:hidden text-black absolute w-full bg-white/95 backdrop-blur-sm shadow-lg py-4">
           <div className="flex flex-col gap-4 px-4">
             <a href="#opportunity" 
@@ -125,13 +128,13 @@ export const Navigation = () => {
       )}
     </nav>
     )}
-    {isPresentationMode && (
+    {presentationMode && (
         <button
           onClick={togglePresentationMode}
           className="float-end p-2 m-5 dark:bg-black bg-white rounded-full shadow-md hover:shadow-lg transition-all"
-          title={isPresentationMode ? "Switch to scroll mode" : "Switch to presentation mode"}
+          title={presentationMode ? "Switch to scroll mode" : "Switch to presentation mode"}
         >
-          {isPresentationMode ? <ScrollText size={24} /> : <Monitor size={24} />}
+          {presentationMode ? <ScrollText size={24} /> : <Monitor size={24} />}
         </button>
     )
     }

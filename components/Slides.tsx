@@ -47,15 +47,21 @@ const IntroSlide = ({ slide, props }: { slide: any; props: SlideProps }) => {
                 <div
                   key={i}
                   className="card p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
-                  onClick={() => props.setModalContent({
+                  onClick={() => {
+                  if (action.link) {
+                    window.location.href = action.link;
+                  } else {
+                    props.setModalContent({
                     title: action.title,
                     content: (
                       <div>
-                        <p>{action.description}</p>
-                        <p className="mt-4 text-mit-red">Click to continue →</p>
+                      <p>{action.description}</p>
+                      <p className="mt-4 text-mit-red">Click to continue →</p>
                       </div>
                     )
-                  })}
+                    });
+                  }
+                  }}
                 >
                   <h3 className="font-semibold text-mit-red mb-2">{action.title}</h3>
                   <p className="text-sm">{action.description}</p>
@@ -93,6 +99,7 @@ const IntroSlide = ({ slide, props }: { slide: any; props: SlideProps }) => {
                     <h3 className={`
                       font-semibold mb-2 transition-all
                     `}>
+  
                       {feature.title}
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">{feature.description}</p>
