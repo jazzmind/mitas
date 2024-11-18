@@ -2,7 +2,7 @@
 export const suggestForm = "https://forms.gle/Ed5kAkct4cAaJQkn9";
 export const events = [
     {
-        title: "Path to a Public Company Board",
+        title: "Path to a Public Company Board: A Technical Leader's Journey",
         leadImage: "/events/pathway-to-board.jpg",
         date: "Tuesday, January 14",
         startTime: "12:30pm PT / 3:30pm ET",
@@ -10,14 +10,13 @@ export const events = [
         location: "zoom",
         registrationForm: "https://forms.gle/udsE7PNV7g3CdTFL8",
         speakers: [
-            "Duriya Farooqui - boards of New York Stock Exchange, Inercontinental Exchange (NYSE: ICE),and InterContinental Hotels Group (LON: IHG, NYSE: IHG)",
             "Ziad Sultan - board of Spotify (NASDAQ: SPOT)",
             "Shuja Keen - board of ibex (NASDAQ: IBEX)"
         ],
-        description: "Joining a public company board can feel like a mystery. Whom do you contact? What are the selection criteria? How do you prepare? And can you serve if you’re an active executive? Board service isn’t just prestigious; it’s an opportunity for both personal and professional growth. Join us for a unique event where you’ll dive deep into the journeys of experienced board directors. Discover strategies, insights, and the impact board members bring to the organizations they serve. This event is tailored for executives who aspire to make their mark in the boardroom. Learn what it takes to chart your own path towards your first Public Company board seat. Each speaker brings valuable experience from top boards, offering insider perspectives and actionable advice on breaking into this influential arena. Don’t miss this chance to hear firsthand from leaders who are shaping public company boards—and learn how you can, too!"
+        description: "For MIT alumni and technical leaders, your deep expertise is increasingly valuable in today's tech-driven boardrooms. Join us to learn how your engineering background and executive experience can be a powerful asset on public company boards. Our speakers, seasoned board directors from major tech companies, will share practical insights on leveraging your technical acumen in board service, navigating the selection process, and balancing board responsibilities with your executive role. Discover how your unique perspective as a technical leader can contribute to board-level discussions on innovation, digital transformation, and technology risk management."
     },
     {
-        title: "Taking a company Public - A CEO's Perspective",
+        title: "IPO Journey: Technical Considerations for Public Readiness",
         leadImage: "/events/taking-company-public.jpg",
         date: "Tuesday, February 14",
         startTime: "12:30pm PT / 3:30pm ET",
@@ -27,10 +26,10 @@ export const events = [
         speakers: [
             "TBD",
         ],
-        description: "Taking a company public is often the high point of any CEO's career. But it's also a very challenging process. Join us for a unique event where you’ll dive deep into the journeys of experienced board directors. Discover strategies, insights, and the impact board members bring to the organizations they serve. This event is tailored for executives who aspire to make their mark in the boardroom. Learn what it takes to chart your own path towards your first Public Company board seat. Each speaker brings valuable experience from top boards, offering insider perspectives and actionable advice on breaking into this influential arena. Don’t miss this chance to hear firsthand from leaders who are shaping public company boards—and learn how you can, too!"
-    },  
+        description: "For technical executives considering an IPO journey, this session focuses on the critical technology and infrastructure decisions that can make or break public company readiness. Learn from CEOs who've successfully navigated the transition from private to public, with particular emphasis on scaling technical architecture, ensuring compliance readiness, and building robust security frameworks. Gain insights into how your technical background can be instrumental in preparing for and executing a successful IPO."
+    },
     {
-        title: "AI and the Future of Work: A Board Perspective",
+        title: "AI Governance: Technical Leadership in the Boardroom",
         leadImage: "/events/future-of-work.jpg",
         date: "Tuesday, January 14",
         startTime: "12:30pm PT / 3:30pm ET",
@@ -40,10 +39,10 @@ export const events = [
         speakers: [
             "TBD",
         ],
-        description: "The future of work is changing rapidly, and boards need to adapt. Join us for a unique event where you’ll dive deep into the journeys of experienced board directors. Discover strategies, insights, and the impact board members bring to the organizations they serve. This event is tailored for executives who aspire to make their mark in the boardroom. Learn what it takes to chart your own path towards your first Public Company board seat. Each speaker brings valuable experience from top boards, offering insider perspectives and actionable advice on breaking into this influential arena. Don’t miss this chance to hear firsthand from leaders who are shaping public company boards—and learn how you can, too!"
+        description: "As AI reshapes industries, boards need directors who can bridge the gap between technical capabilities and business strategy. This session explores how technical leaders can guide boards through AI adoption, risk assessment, and ethical considerations. Learn how your deep technical expertise can help boards navigate the complexities of AI governance, workforce transformation, and technology-driven innovation. Particularly relevant for MIT alumni who understand both the technical and business implications of AI deployment at scale."
     },
     {
-        title: "CyberRisk at the Board Level",
+        title: "Cybersecurity Oversight: From Engineering to the Boardroom",
         leadImage: "/events/cyber-risk.jpg",
         date: "Tuesday, January 14",
         startTime: "12:30pm PT / 3:30pm ET",
@@ -53,6 +52,6 @@ export const events = [
         speakers: [
             "TBD",
         ],
-        description: "Cybersecurity is a critical issue for every company. But what role does the board play in managing this risk? Join us for a unique event where you’ll dive deep into the journeys of experienced board directors. Discover strategies, insights, and the impact board members bring to the organizations they serve. This event is tailored for executives who aspire to make their mark in the boardroom. Learn what it takes to chart your own path towards your first Public Company board seat. Each speaker brings valuable experience from top boards, offering insider perspectives and actionable advice on breaking into this influential arena. Don’t miss this chance to hear firsthand from leaders who are shaping public company boards—and learn how you can, too!"
+        description: "For technical executives and MIT alumni, your deep understanding of technology architecture and security principles is invaluable for modern board cybersecurity oversight. Learn how to translate your technical expertise into meaningful board-level discussions about cyber risk, security strategy, and incident response. Discover how technical leaders can effectively communicate complex security concepts to fellow board members and guide strategic decisions about technology investments and risk management."
     }
 ];
